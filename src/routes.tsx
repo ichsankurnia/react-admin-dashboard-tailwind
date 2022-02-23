@@ -2,6 +2,7 @@ import MainDashboard from "./pages/dashboard/MainDashboard"
 import Login from "./pages/auth/Login"
 import ModalExample from "./pages/dashboard/ModalExample"
 import User from "./pages/dashboard/User"
+import Register from "./pages/auth/Register"
 
 
 export const AdminRoutes = [
@@ -175,10 +176,10 @@ export const AuthRoutes = [
         path: 'sign-in',
         component: <Login />
     },
-    // {
-    //     path: 'sign-up',
-    //     component: <Register />
-    // },
+    {
+        path: 'sign-up',
+        component: <Register />
+    },
     // {
     //     path: 'otp-validate',
     //     component: <OtpPage />
