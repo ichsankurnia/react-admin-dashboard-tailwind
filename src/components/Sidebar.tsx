@@ -74,7 +74,7 @@ const Sidebar: React.FC<Props> = () => {
 
     const getRoutesPath = () => {
         return AdminRoutes.map(({name_var, url_var, icon_var, children}, key) => 
-            <div key={key} className='mb-5 w-full'>
+            <div key={key} className='w-full'>
                 {children && children.length> 0?
                 <div>
                     <div className={`px-4 py-2.5 -my-1 cursor-pointer ${activeDrop(url_var) || menuActive===url_var? 'text-white' : 'text-gray-400'} hover:text-white flex justify-between items-center text-left transition duration-100 ease-in-out transform hover:scale-105`} onClick={()=>handleShowSubMenu(url_var)}>
@@ -111,13 +111,13 @@ const Sidebar: React.FC<Props> = () => {
 
     const getRoutesPathUnCollapese = () => {
         return AdminRoutes.map(({url_var, icon_var, children}, key) => 
-            <div key={key} className='mb-5 relative flex justify-center'>
+            <div key={key} className='relative flex justify-center'>
                 {children && children.length> 0?
                 <div>
                     <div className={`mb-1 cursor-pointer ${activeDrop(url_var) || menuActive===url_var? 'text-white scale-150' : 'text-gray-400'} hover:text-white mb-2.5 transition duration-300 ease-in-out transform hover:scale-150`} onMouseEnter={()=>handleShowSubMenu(url_var)} onClick={()=>handleShowSubMenu(url_var)}>
                         <i className={`${icon_var} `}></i>
                     </div>
-                    <ul  className={`${menuActive===url_var? 'bg-primary absolute top-0 left-14 z-50 pl-2 pr-5 w-max rounded transition duration-500 ease-in-out transform hover:scale-105' : 'hidden'}`}>
+                    <ul  className={`${menuActive===url_var? 'bg-dark absolute top-0 left-16 2xl:left-20 z-50 pl-2 pr-5 w-max rounded transition duration-500 ease-in-out transform hover:scale-105' : 'hidden'}`}>
                     {children.map(({url_var, name_var, icon_var}, key) => 
                         <li key={key}>
                             <Link to={url_var} onClick={() => setSidebarOpen(false)}
@@ -174,10 +174,10 @@ const Sidebar: React.FC<Props> = () => {
                 {/* SIDEBAR */}
                 <div id="sidebar" ref={sidebar}
                     className={`absolute z-40 left-0 top-0 md:static md:left-auto md:top-auto h-screen bg-dark md:translate-x-0 transform transition-all duration-700 ease-in-out
-                    ${sidebarOpen? 'translate-x-0' : '-translate-x-64'} ${collapse? 'w-64 2xl:w-72':'md:w-[4.4rem]'} `}
+                    ${sidebarOpen? 'translate-x-0' : '-translate-x-64'} ${collapse? 'w-64 2xl:w-72':'md:w-[4.4rem] 2xl:w-[5rem]'} `}
                 >
                     <div className={`overflow-y-auto overflow-x-hidden h-full flex flex-col items-center text-white text-left`}>
-                        <div className='cursor-pointer z-10 w-full px-4 mb-5 mt-3.5' onClick={() => window.location.href = '/dashboard'}>
+                        <div className='cursor-pointer z-10 w-full px-4 mb-8 mt-3.5' onClick={() => window.location.href = '/dashboard'}>
                             {collapse?
                             <div className="flex items-center border-b border-gray-500 py-5">
                                 <LazyLoadImage effect='blur' src='/next-logo.png' className="w-8 mr-3.5" alt="" />
@@ -189,13 +189,17 @@ const Sidebar: React.FC<Props> = () => {
                         </div>
 
                         {collapse?
-                        getRoutesPath()
+                        <div className="w-full space-y-4">
+                            {getRoutesPath()}
+                        </div>
                         :
-                        getRoutesPathUnCollapese()
+                        <div className='w-full h-full flex flex-col absolute top-24 transition-all duration-1000 space-y-3'>
+                            {getRoutesPathUnCollapese()}
+                        </div>
                         }
                         
                         <button onClick={()=>setCollapse(!collapse)}
-                            className={`hidden md:flex absolute ${collapse? 'left-[14.6rem] 2xl:left-[16.6rem]':'left-[3rem]'} top-6 justify-center items-center bg-gray-600 
+                            className={`hidden md:flex absolute ${collapse? 'left-[14.6rem] 2xl:left-[16.6rem]':'left-[3rem] 2xl:left-[3.5rem]'} top-6 justify-center items-center bg-gray-600 
                             text-white rounded-full shadow-lg w-10 h-10 hover:scale-125 transform transition-all duration-700 ease-in-out z-10`}
                         >
                             {collapse? <i className="ri-arrow-left-s-line text-2xl"></i>: <i className="ri-arrow-right-s-line text-2xl"></i> }

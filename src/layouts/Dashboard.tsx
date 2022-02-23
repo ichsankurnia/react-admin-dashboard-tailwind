@@ -41,9 +41,9 @@ const Dashboard: React.FC<Props> = () => {
 	
 					
 					{/* FOOTER */}
-					<div className='flex items-center justify-between bg-white p-5 md:px-5 mt-auto'>
-						<p>Design & Develop by TiesTani</p>
-						<p>{new Date().getFullYear()} © TiesTani v2.0</p>
+					<div className='flex items-center justify-between bg-white p-5 px-3 md:px-5 mt-auto text-xs md:text-base'>
+						<p>Design & Develop by Ories</p>
+						<p>{new Date().getFullYear()} © CompanyName v2.0</p>
 					</div>
 	
 				</div>
