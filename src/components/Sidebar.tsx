@@ -3,6 +3,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link, useLocation } from "react-router-dom";
 import { AdminRoutes } from "../routes";
 import ProfileMenu from "./ProfileMenu";
+import appLogo from '../assets/img/applogo.png'
 
 
 type Props = {};
@@ -180,11 +181,13 @@ const Sidebar: React.FC<Props> = () => {
                         <div className='cursor-pointer z-10 w-full px-4 mb-8 mt-3.5' onClick={() => window.location.href = '/dashboard'}>
                             {collapse?
                             <div className="flex items-center border-b border-gray-500 py-5">
-                                <LazyLoadImage effect='blur' src='/next-logo.png' className="w-8 mr-3.5" alt="" />
+                                <LazyLoadImage effect='blur' src={appLogo} className="w-8 mr-3.5" alt="" />
                                 <h1 className="text-2xl font-bold">APPS NAME</h1>
                             </div>
                             :
-                            <LazyLoadImage effect='blur' src='/next-logo.png' className="w-10 mt-5" alt="" />
+                            <div className="flex justify-center items-center mt-3.5">
+                                <LazyLoadImage effect='blur' src={appLogo} alt="" className="w-8" />
+                            </div>
                             }
                         </div>
 
